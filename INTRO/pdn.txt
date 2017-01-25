@@ -1,0 +1,128 @@
+?- consult('début.pl').
+% début.pl compiled 0.00 sec, 3 clauses
+true.
+
+?- homme(X).
+X = gaston.
+
+?- consult('début.pl').
+% début.pl compiled 0.00 sec, 9 clauses
+true.
+
+?- homme(X).
+X = jean ;
+X = gaston.
+-------------------------------------------------------------------
+?- consult('début.pl').
+% début.pl compiled 0.00 sec, 1 clauses
+true.
+
+?- homme(X).
+X = jean ;
+X = gaston .
+
+?- femme(Y).
+Y = marie ;
+Y = gertrude .
+
+?- reconsult('début.pl').
+% début.pl compiled 0.00 sec, 1 clauses
+true.
+
+?- homme(X).
+X = jean ;
+X = gaston ;
+X = michel ;
+X = popeye ;
+X = david ;
+X = charly.
+
+?- femme(Y).
+Y = marie ;
+Y = gertrude ;
+Y = laure ;
+Y = olive ;
+Y = virginie ;
+Y = julie ;
+Y = mimosa ;
+Y = sidonie.
+
+--------
+
+?- reconsult('début.pl').
+% début.pl compiled 0.00 sec, 7 clauses
+true.
+
+?- mere(X,julie).
+X = laure.
+
+?- mere(laure,Y).
+Y = charly ;
+Y = julie.
+
+?- mere(X,Y).
+X = gertrude,
+Y = david ;
+X = gertrude,
+Y = virginie ;
+X = laure,
+Y = charly ;
+X = laure,
+Y = julie ;
+X = marie,
+Y = laure ;
+X = olive,
+Y = mimosa ;
+X = olive,
+Y = sidonie.
+
+?- mere(marie,mimosa).
+false.
+
+?- mere(marie,gertrude).
+false.
+
+?- mere(marie,laure).
+true.
+?- reconsult('début.pl').
+% début.pl compiled 0.00 sec, 7 clauses
+true.
+
+?- mere(X,julie).
+X = laure.
+
+?- mere(laure,Y).
+Y = charly ;
+Y = julie.
+
+?- mere(X,Y).
+X = gertrude,
+Y = david ;
+X = gertrude,
+Y = virginie ;
+X = laure,
+Y = charly ;
+X = laure,
+Y = julie ;
+X = marie,
+Y = laure ;
+X = olive,
+Y = mimosa ;
+X = olive,
+Y = sidonie.
+
+?- mere(marie,mimosa).
+false.
+
+?- mere(marie,gertrude).
+false.
+
+?- mere(marie,laure).
+true.
+
+
+--------
+
+
+
+
