@@ -46,7 +46,7 @@ pere(jean,popeye).
 epoux(marie,jean).
 epoux(gertrude,gaston).
 epoux(laure,michel).
-epoux(popeye,olive).
+epoux(olive,popeye).
 
 /*REGLES*/
 
@@ -70,7 +70,7 @@ fille(X,Y) :-femme(X),mere(Y,X).
 	conjonction 
 	fille(X,Y) :-femme(X),pere(Y,X).
 	conjonction et disjonction
-	fille(X,Y) :- femme(X),pere(Y,X);femme(X),pere(Y,X).
+	fille(X,Y) :- femme(X),pere(Y,X);femme(X),mere(Y,X).
 */
 
 parent(X,Y) :- mere(X,Y);pere(X,Y).
