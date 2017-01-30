@@ -109,9 +109,9 @@ grandmere(X,Y) :- femme(X),(parent(X,Z),parent(Z,Y)).
 */
 grandmere(X,Y) :- (mere(X,Z),parent(Z,Y)).
 
-oncle(X,Y) :- (frere(X,Z),(pere(Z,Y);mere(Z,Y))),(X\=Z).
+oncle(X,Y) :- (frere(X,Z),(parent(Z,Y))),(X\=Z).
 
-tante(X,Y) :- (soeur(X,Z),(pere(Z,Y);mere(Z,Y))),(X\=Z).
+tante(X,Y) :- (soeur(X,Z),parent(Z,Y)),(X\=Z).
 
 grandparent(X,Y) :- grandpere(X,Y);grandmere(X,Y).
 
