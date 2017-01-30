@@ -26,6 +26,8 @@ mere(gertrude,virginie).
 mere(laure,charly).
 mere(laure,julie).
 mere(marie,laure).
+mere(marie,gaston).
+mere(marie,popeye).
 mere(olive,mimosa).
 mere(olive,sidonie).
 /* 
@@ -78,8 +80,40 @@ fille(X,Y) :- femme(X),parent(Y,X).
 fils(X,Y) :- homme(X),parent(Y,X).
 
 frere(X,Y) :- homme(X),fils(X,Z),parent(Z,Y).
-
 soeur(X,Y) :- femme(X),fille(X,Z),parent(Z,Y).
+/*
+Permet d'éviter les warnings ... car on utilise pas de Z, variable non déclarée 
+	grandpere(X,Y) :- hommes(X),parent(Z,Y).
+grandpere(X,Y) :- homme(X),(parent(X,_),parent(_,Y)).
+//On rencontre un souci dans le parcours de l'arbre.
+?- grandpere(X,Y).
+X = jean,
+Y = david ;
+X = jean,
+Y = virginie ;
+X = jean,
+Y = charly ;
+X = jean,
+Y = julie ;
+X = jean,
+Y = laure ;
+X = jean,
+Y = mimosa ;
+*/
+/*
+grandpere(X,Y) :- homme(X),(parent(X,Z),parent(Z,Y)).
+*/
+grandpere(X,Y) :-  (pere(X,Z),parent(Z,Y)).
+/*
+grandmere(X,Y) :- femme(X),(parent(X,Z),parent(Z,Y)).
+*/
+grandmere(X,Y) :- (mere(X,Z),parent(Z,Y)).
+
+oncle(X,Y) :- (frere(X,Z),parent(Z,Y)),(X\=Z).
+
+
+
+
 
 
 
