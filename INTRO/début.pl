@@ -143,4 +143,11 @@ marier(X,Y):- epouse(X,Y).
 */
 %Autre méthode de définition de grand parents avec enfants
 
-grand_parent()
+grand_parent(X,Y) :- enfant(Y,Z),enfant(Z,X).
+
+/*
+	******* RECURSIVITE ******
+*/
+ancetre(X,Y) :- parent(X,Y).
+ancetre(X,Y) :- parent(X,Z),ancetre(Z,Y).
+
