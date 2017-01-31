@@ -74,13 +74,29 @@ fille(X,Y) :-femme(X),mere(Y,X).
 	conjonction et disjonction
 	fille(X,Y) :- femme(X),pere(Y,X);femme(X),mere(Y,X).
 */
+%définition d'enfant à deux variables
+
+enfant(X,Y) :- parent(Y,X).
 
 parent(X,Y) :- mere(X,Y);pere(X,Y).
+/*Dans prolog, quand on définit un prédicat (meme nom) mais avec un nombre de variables différent, il considère que ce sont deux prédicats différents*/
+parent(X):-enfant(_,X).
+/*
+parent(X) :- enfant(X,_).
+*/
+
+
+
 fille(X,Y) :- femme(X),parent(Y,X).
 fils(X,Y) :- homme(X),parent(Y,X).
 
 frere(X,Y) :- homme(X),fils(X,Z),parent(Z,Y).
 soeur(X,Y) :- femme(X),fille(X,Z),parent(Z,Y).
+
+% En interdisant d'être son propre frere
+fratrie(X,Y) :- parent(Z,X),X\==Y,parent(Z,Y).
+% En utilisant père et mère à défaut de parent car on obtient deux fois le nom des frêres
+
 /*
 Permet d'éviter les warnings ... car on utilise pas de Z, variable non déclarée 
 	grandpere(X,Y) :- hommes(X),parent(Z,Y).
@@ -109,9 +125,9 @@ grandmere(X,Y) :- femme(X),(parent(X,Z),parent(Z,Y)).
 */
 grandmere(X,Y) :- (mere(X,Z),parent(Z,Y)).
 
-oncle(X,Y) :- (frere(X,Z),(parent(Z,Y))),(X\=Z).
+oncle(X,Y) :- (frere(X,Z),(parent(Z,Y))),(X\==Z).
 
-tante(X,Y) :- (soeur(X,Z),parent(Z,Y))),(X\=Z).
+tante(X,Y) :- (soeur(X,Z),parent(Z,Y)),(X\=Z).
 
 grandparent(X,Y) :- grandpere(X,Y);grandmere(X,Y).
 
@@ -119,7 +135,12 @@ petitfils(X,Y) :- homme(X),grandparent(Y,X).
 
 petitefille(X,Y) :- femme(X),grandparent(Y,X).
 
+marier(X,Y) :- epoux(X,Y).
+marier(X,Y):- epouse(X,Y).
 
+/*
+	marier(X,Y) :- epoux(X,Y),epouse(Y,X).
+*/
+%Autre méthode de définition de grand parents avec enfants
 
-
-
+grand_parent()
