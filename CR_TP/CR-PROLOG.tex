@@ -1,0 +1,397 @@
+\documentclass[12pt,a4paper,article]{article} 
+\usepackage{stix}
+\usepackage[latin1]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage{url}
+\usepackage[francais]{babel}
+\usepackage{fancyhdr}
+\lhead{\textbf{Haut de pages à gauche}}
+\rhead{\textbf{Haut de pages à droite}}
+\renewcommand{\headrulewidth}{0,1mm}
+\lfoot{bas de pages à gauche}
+\rfoot{bas de pages à droite}
+\renewcommand{\footrulewidth}{0,1mm}
+\pagestyle{fancy}
+\usepackage[top=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx}%\begin{figure}[H]\begin{center}\includegraphics[scale=1]{Intro/Prob.jpg}\caption{}\end{center}\end{figure}
+\usepackage{float}
+\usepackage{eurosym}
+\usepackage{textcomp}
+\usepackage{wasysym}% Pourmille
+\usepackage{array}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{multicol}%\begin{multicols}{nb colonnes}...\end{multicols}
+\usepackage{amsfonts}%$\mathbb{R}$
+\AddThinSpaceBeforeFootnotes
+\FrenchFootnotes%\footnote{test}
+\usepackage{ulem}
+%\sout{Texte à barrer}
+%\xout{Texte à hachurer}
+%\uwave{Texte à souligner par une vaguelette}
+%%%%%%%%%%%%%%%%%%%%%%% Dans le document
+\usepackage{listings}
+%\begin{table}[H]
+%\begin{center}
+%\begin{tabular}{|l|c|r|}
+%\hline
+%colonne 1 & colonne 2 & colonne 3 \\
+ %\hline
+ %1.1 & 1.2 & 1.3 \\
+ %2.1 & 2.2 & 2.3 \\
+ %\hline
+%\end{tabular}
+%\end{center}
+%\caption{}
+%\end{table}
+
+%% Transposée de A     : \,^t A.
+
+%\lstset{language=C++,
+   %             basicstyle=\ttfamily,\tiny,
+     %           keywordstyle=\color{blue}\ttfamily,
+        %        stringstyle=\color{red}\ttfamily,
+           %     commentstyle=\color{green}\ttfamily,
+              %  morecomment=[l][\color{magenta}]{\#}
+%}
+\usepackage{color}
+    \definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+    \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+    \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+    \definecolor{ocherCode}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+    \definecolor{blueCode}{rgb}{0, 0, 0.93} % #0000EE -> rgb(0, 0, 238)
+    \definecolor{greenCode}{rgb}{0, 0.6, 0} % #009900 -> rgb(0, 153, 0) 
+\usepackage{upquote}
+\usepackage{listings}
+\makeatletter
+\lstdefinelanguage{HTML5}{
+    sensitive=true,
+    keywords={%
+    % JavaScript
+    typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break,
+    % HTML
+    html, title, meta, style, head, body, script, canvas,span,
+    % CSS
+    border:, transform:, -moz-transform:, transition-duration:, transition-property:,
+    transition-timing-function:
+    },
+    % http://texblog.org/tag/otherkeywords/
+    otherkeywords={<, >, \/},   
+    ndkeywords={class, export, boolean, throw, implements, import, this},   
+    comment=[l]{//},
+    % morecomment=[s][keywordstyle]{<}{>},  
+    morecomment=[s]{/*}{*/},
+    morecomment=[s]{<!}{>},
+    morestring=[b]',
+    morestring=[b]",    
+    alsoletter={-},
+    alsodigit={:}
+}
+\lstset{%
+    % Basic design
+    backgroundcolor=\color{lightgray},
+    basicstyle={\small\ttfamily},   
+    frame=l,
+    % Line numbers
+    xleftmargin={0.75cm},
+    numbers=left,
+    stepnumber=1,
+    firstnumber=1,
+    numberfirstline=true,
+    % Code design
+    identifierstyle=\color{black},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywordstyle=\color{greenCode}\bfseries,
+    stringstyle=\color{ocherCode}\ttfamily,
+    commentstyle=\color{darkgray}\ttfamily,
+    % Code
+    language={HTML5},
+    tabsize=2,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true
+}
+\makeatother
+
+
+%\begin{lstlisting}[language=bash]
+
+%\end{lstlisting}
+%\begin{lstlisting}[language=html]
+
+%\end{lstlisting}
+
+
+\usepackage{tikz}
+%\begin{center}
+%\begin{tikzpicture}[sibling distance=10em,
+%  every node/.style = {shape=rectangle, rounded corners,
+%    draw, align=center,
+%    top color=white, bottom color=blue!20}]]
+%  \node {Formulas}
+%    child { node {single-line} }
+%    child { node {multi-line}
+%      child { node {aligned at}
+%        child { node {relation sign} }
+%        child { node {several places} }
+%        child { node {center} } }
+%      child { node {first left,\\centered,\\last right} } };
+%\end{tikzpicture
+%\end{center}
+
+\newtheorem{The}{Théorème}
+\newtheorem{Pro}[The]{Proposition}
+\newtheorem{Def}[The]{Définition}
+%\begin{The}[Pythogore] 
+%La somme des carrés des longueurs côtés adjacents à l'angle droit d'un triangle rectangle est égale au carré de la longueur de l'hypothénuse de ce triangle. \end{The} 
+\usepackage{multirow}
+
+\pagestyle{empty}
+%%\thispagestyle{empty} 
+%%sur les pages où la numérotation subsiste
+
+\usepackage{textcomp}
+\usepackage{listings}
+%\usepackage{minted}      % (requires -shell-escape)
+\usepackage{xcolor}
+\usepackage{filecontents}
+
+% --- ugly internals for language definition ---
+%
+\makeatletter
+
+% initialisation of user macros
+\newcommand\PrologPredicateStyle{}
+\newcommand\PrologVarStyle{}
+\newcommand\PrologAnonymVarStyle{}
+\newcommand\PrologAtomStyle{}
+\newcommand\PrologOtherStyle{}
+\newcommand\PrologCommentStyle{}
+
+% useful switches (to keep track of context)
+\newif\ifpredicate@prolog@
+\newif\ifwithinparens@prolog@
+
+% save definition of underscore for test
+\lst@SaveOutputDef{`_}\underscore@prolog
+
+% local variables
+\newcount\currentchar@prolog
+
+\newcommand\@testChar@prolog%
+{%
+  % if we're in processing mode...
+  \ifnum\lst@mode=\lst@Pmode%
+    \detectTypeAndHighlight@prolog%
+  \else
+    % ... or within parentheses
+    \ifwithinparens@prolog@%
+      \detectTypeAndHighlight@prolog%
+    \fi
+  \fi
+  % Some housekeeping...
+  \global\predicate@prolog@false%
+}
+
+% helper macros
+\newcommand\detectTypeAndHighlight@prolog
+{%
+  % First, assume that we have an atom.
+  \def\lst@thestyle{\PrologAtomStyle}%
+  % Test whether we have a predicate and modify the style accordingly.
+  \ifpredicate@prolog@%
+    \def\lst@thestyle{\PrologPredicateStyle}%
+  \else
+    % Test whether we have a predicate and modify the style accordingly.
+    \expandafter\splitfirstchar@prolog\expandafter{\the\lst@token}%
+    % Check whether the identifier starts by an underscore.
+    \expandafter\ifx\@testChar@prolog\underscore@prolog%
+      % Check whether the identifier is '_' (anonymous variable)
+      \ifnum\lst@length=1%
+        \let\lst@thestyle\PrologAnonymVarStyle%
+      \else
+        \let\lst@thestyle\PrologVarStyle%
+      \fi
+    \else
+      % Check whether the identifier starts by a capital letter.
+      \currentchar@prolog=65
+      \loop
+        \expandafter\ifnum\expandafter`\@testChar@prolog=\currentchar@prolog%
+          \let\lst@thestyle\PrologVarStyle%
+          \let\iterate\relax
+        \fi
+        \advance \currentchar@prolog by 1
+        \unless\ifnum\currentchar@prolog>90
+      \repeat
+    \fi
+  \fi
+}
+\newcommand\splitfirstchar@prolog{}
+\def\splitfirstchar@prolog#1{\@splitfirstchar@prolog#1\relax}
+\newcommand\@splitfirstchar@prolog{}
+\def\@splitfirstchar@prolog#1#2\relax{\def\@testChar@prolog{#1}}
+
+% helper macro for () delimiters
+\def\beginlstdelim#1#2%
+{%
+  \def\endlstdelim{\PrologOtherStyle #2\egroup}%
+  {\PrologOtherStyle #1}%
+  \global\predicate@prolog@false%
+  \withinparens@prolog@true%
+  \bgroup\aftergroup\endlstdelim%
+}
+
+% language name
+\newcommand\lang@prolog{Prolog-pretty}
+% ``normalised'' language name
+\expandafter\lst@NormedDef\expandafter\normlang@prolog%
+  \expandafter{\lang@prolog}
+
+% language definition
+\expandafter\expandafter\expandafter\lstdefinelanguage\expandafter%
+{\lang@prolog}
+{%
+  language            = Prolog,
+  keywords            = {},      % reset all preset keywords
+  showstringspaces    = false,
+  alsoletter          = (,
+  alsoother           = @$,
+  moredelim           = **[is][\beginlstdelim{(}{)}]{(}{)},
+  MoreSelectCharTable =
+    \lst@DefSaveDef{`(}\opparen@prolog{\global\predicate@prolog@true\opparen@prolog},
+}
+
+% Hooking into listings to test each ``identifier''
+\newcommand\@ddedToOutput@prolog\relax
+\lst@AddToHook{Output}{\@ddedToOutput@prolog}
+
+\lst@AddToHook{PreInit}
+{%
+  \ifx\lst@language\normlang@prolog%
+    \let\@ddedToOutput@prolog\@testChar@prolog%
+  \fi
+}
+
+\lst@AddToHook{DeInit}{\renewcommand\@ddedToOutput@prolog{}}
+
+\makeatother
+%
+% --- end of ugly internals ---
+
+
+% --- definition of a custom style similar to that of Pygments ---
+% custom colors
+\definecolor{PrologPredicate}{RGB}{000,031,255}
+\definecolor{PrologVar}      {RGB}{024,021,125}
+\definecolor{PrologAnonymVar}{RGB}{000,127,000}
+\definecolor{PrologAtom}     {RGB}{186,032,032}
+\definecolor{PrologComment}  {RGB}{063,128,127}
+\definecolor{PrologOther}    {RGB}{000,000,000}
+
+% redefinition of user macros for Prolog style
+\renewcommand\PrologPredicateStyle{\color{PrologPredicate}}
+\renewcommand\PrologVarStyle{\color{PrologVar}}
+\renewcommand\PrologAnonymVarStyle{\color{PrologAnonymVar}}
+\renewcommand\PrologAtomStyle{\color{PrologAtom}}
+\renewcommand\PrologCommentStyle{\itshape\color{PrologComment}}
+\renewcommand\PrologOtherStyle{\color{PrologOther}}
+
+% custom style definition 
+\lstdefinestyle{Prolog-pygsty}
+{
+  language     = Prolog-pretty,
+  upquote      = true,
+  stringstyle  = \PrologAtomStyle,
+  commentstyle = \PrologCommentStyle,
+  literate     =
+    {:-}{{\PrologOtherStyle :-}}2
+    {,}{{\PrologOtherStyle ,}}1
+    {.}{{\PrologOtherStyle .}}1
+}
+
+% global settings
+\lstset
+{
+  captionpos = below,
+  frame      = single,
+  columns    = fullflexible,
+  basicstyle = \ttfamily,
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%
+
+
+
+
+\title{\textbf{Ton\\Titre}}
+\author{LATIF Mehdi}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+Ton texte 
+
+
+
+
+
+
+
+
+% write some sample code to an external file
+\begin{filecontents*}{sample.pl}
+somePredicate(_, B) :-
+    arbitraryPredicate(A, _variable, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+    /*
+    block comment: blah blah blah
+    */
+    % to-end-of-line comment: blah blah blah
+\end{filecontents*}
+
+
+\section{With \textsf{minted} / Pygments}
+%\begin{listing}
+%\inputminted[frame=single]{prolog}{sample.pl}
+%\caption{Sample Prolog code}
+%\end{listing}
+
+\section{With \textsf{Listings}}
+\setcounter{lstlisting}{1}
+\lstinputlisting[
+  style      = Prolog-pygsty,
+  caption    = {Using my custom \textsf{listings} style},
+]{sample.pl}
+
+\lstinputlisting[
+  language = Prolog,
+  caption  = {Using \textsf{listings}' default settings for Prolog},
+]{sample.pl}
+
+
+
+
+
+\listoffigures
+\listoftables
+\begin{abstract} 
+Ton résumé
+\end{abstract}
+
+
+\end{document}
