@@ -319,6 +319,8 @@
   frame      = single,
   columns    = fullflexible,
   basicstyle = \ttfamily,
+      backgroundcolor=\color{lightgray},
+    basicstyle={\tiny\ttfamily},   
 }
 
 
@@ -331,21 +333,24 @@
 
 
 
-\title{\textbf{Ton\\Titre}}
+\title{\textbf{LOGIQUE\\Travaux Pratiques}}
 \author{LATIF Mehdi}
 
 
 \begin{document}
 
 \maketitle
-\tableofcontents
+\section{Introduction : Une histoire de famille}
 
 Ton texte 
 
 
 
 
-
+\noindent See the following command :
+\begin{lstlisting}[language=bash]
+  $ wget http://tex.stackexchange.com
+\end{lstlisting}
 
 
 
@@ -386,11 +391,21 @@ somePredicate(_, B) :-
 
 
 
-
+\newpage
 \listoffigures
-\listoftables
+\newpage
+\tableofcontents
+
+\newpage
 \begin{abstract} 
-Ton résumé
+
+\vspace*{\stretch{1}}
+\textcolor{white}{.}\newline
+\textbf{Compte rendu de travaux pratiques en PROLOG.}\newline
+\textbf{Matière :} Logique mathématique pour l'informatique. 
+Licence 2 Mathématiques informatique 2017
+\vspace*{\stretch{1}}
+
 \end{abstract}
 
 
