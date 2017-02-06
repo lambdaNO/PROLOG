@@ -341,10 +341,35 @@
 
 \maketitle
 \section{Introduction : Une histoire de famille}
+Création d'un fichier : \textit{début.pl}
+\begin{figure}[H]\begin{center}\includegraphics[scale=0.4]{ILU/gene.png}\caption{Arbre généalogique}\end{center}\end{figure}
+\subsection{Déclaration des faits}
+Traduction de l'arbre généalogique en faits
+\begin{lstlisting}{langage = Prolog}
+/* FAITS
+ * Hommes
+ */
+	homme(jean).
+	homme(gaston).
+	homme(michel).
+	homme(popeye).	
+	homme(david).
+	homme(charly).
 
-Ton texte 
-
-
+/* FAITS
+ * Femmes
+ */
+femme(marie).
+femme(gertrude).
+femme(laure).
+femme(olive).
+femme(virginie).
+femme(julie).
+femme(mimosa).
+femme(sidonie).
+ \end{lstlisting}
+ 
+ 
 
 
 \noindent See the following command :
