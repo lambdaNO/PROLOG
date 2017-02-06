@@ -31,7 +31,7 @@ mere(marie,popeye).
 mere(olive,mimosa).
 mere(olive,sidonie).
 /* 
- * Relation de pètr
+ * Relation de père
  */
 pere(gaston,david).
 pere(gaston,virginie).
@@ -148,4 +148,6 @@ grand_parent(X,Y) :- enfant(Y,Z),enfant(Z,X).
 /*
 	******* RECURSIVITE ******
 */
+ancetre(X,Y) :- parent(X,Y).
+ancetre(X,Y) :- parent(X,Z),ancetre(Z,Y).
 

@@ -359,17 +359,175 @@ Traduction de l'arbre généalogique en faits
 /* FAITS
  * Femmes
  */
-femme(marie).
-femme(gertrude).
-femme(laure).
-femme(olive).
-femme(virginie).
-femme(julie).
-femme(mimosa).
-femme(sidonie).
- \end{lstlisting}
- 
- 
+	femme(marie).
+	femme(gertrude).
+	femme(laure).
+	femme(olive).
+	femme(virginie).
+	femme(julie).
+	femme(mimosa).
+	femme(sidonie).
+	
+	
+/* 
+ * Relation de mère
+ */
+	mere(gertrude,david).
+	mere(gertrude,virginie).
+	mere(laure,charly).
+	mere(laure,julie).
+	mere(marie,laure).
+	mere(marie,gaston).
+	mere(marie,popeye).
+	mere(olive,mimosa).
+	mere(olive,sidonie).	
+	
+/* 
+ * Relation de père
+ */
+	pere(gaston,david).
+	pere(gaston,virginie).
+	pere(michel,charly).
+	pere(michel,julie).
+	pere(popeye,mimosa).
+	pere(popeye,sidonie).
+	pere(jean,gaston).
+	pere(jean,laure).
+	pere(jean,popeye).
+
+/* 
+ * Relation de couple
+ */
+	epoux(marie,jean).
+	epoux(gertrude,gaston).
+	epoux(laure,michel).
+	epoux(olive,popeye).	
+\end{lstlisting}
+
+\subsection{Protocole de lancement}
+
+\begin{enumerate}
+\item Ouvrir un terminale
+\item Se placer dans le répertoire contenant le fichier.pl
+\item Lancer la commande \textit{swipl}
+\item Consulter le fichier à l'aide de l'une des syntaxe suivante : 
+\begin{itemize}
+\item consult('file.pl').
+\item reconsult('file.pl').
+\item ['file.pl'].
+\end{itemize}
+\end{enumerate} 
+
+\begin{lstlisting}[language=bash]
+E131729J@I121V7pc10:~/L2-S4-2016-2017/PROLOG/INTRO$ pwd
+/comptes/E131729J/L2-S4-2016-2017/PROLOG/INTRO
+E131729J@I121V7pc10:~/L2-S4-2016-2017/PROLOG/INTRO$ swipl
+Welcome to SWI-Prolog (Multi-threaded, 64 bits, Version 6.6.4)
+Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+?- consult('début.pl').
+Warning: /comptes/E131729J/L2-S4-2016-2017/PROLOG/INTRO/début.pl:57:
+	Singleton variables: [Y]
+Warning: /comptes/E131729J/L2-S4-2016-2017/PROLOG/INTRO/début.pl:58:
+	Singleton variables: [Y]
+Warning: /comptes/E131729J/L2-S4-2016-2017/PROLOG/INTRO/début.pl:90:
+	Clauses of fille/2 are not together in the source-file
+% début.pl compiled 0.00 sec, 62 clauses
+true.
+\end{lstlisting}
+
+\subsection{Déclaration des premières règles}
+\begin{center}
+\textit{Ne pas oublier que l'on pose des questions à un système pseudo expert.}
+\end{center}
+\subsubsection{Consultation des informations de fait}
+\paragraph{Ca c'est un homme, un vrai}
+\begin{center}
+\textit{homme(X). $\equiv$ X est il un homme .}.
+\end{center}
+
+\begin{lstlisting}[language=bash]
+?- homme(X).
+X = jean ;
+X = gaston ;
+X = michel ;
+X = popeye ;
+X = david ;
+X = charly.
+
+?- homme(jean).
+true.
+
+?- homme(sidonie).
+false.
+\end{lstlisting}
+
+Les résultats sont équivalents pour les questions posées pour les femmes.
+
+\paragraph{Luc, je suis ton père !}
+
+\begin{center}
+\textit{pere(X,Y). $\equiv$ X est le père de Y ?}.
+\end{center}
+
+\begin{lstlisting}[language=bash]
+?- pere(X,Y).
+X = gaston,
+Y = david ;
+X = gaston,
+Y = virginie ;
+X = michel,
+Y = charly ;
+X = michel,
+Y = julie ;
+X = popeye,
+Y = mimosa ;
+X = popeye,
+Y = sidonie ;
+X = jean,
+Y = gaston ;
+X = jean,
+Y = laure ;
+X = jean,
+Y = popeye.
+
+?- pere(X,jean).
+false.
+
+?- pere(jean,X).
+X = gaston ;
+X = laure ;
+X = popeye.
+
+?- pere(laure,X).
+false.
+
+?- pere(X,laure).
+X = jean.
+
+?- pere(gaston,sidonie).
+false.
+\end{lstlisting}
+
+
+Les résultats sont équivalents pour les questions posées pour la mère.
+
+\paragraph{Quatre mariages et un enterrement}
+
+\begin{center}
+\textit{epoux(X,Y). $\equiv$ X est le père de Y ?}.
+\end{center}
+
+
+
+
+
+
 
 
 \noindent See the following command :

@@ -31,7 +31,7 @@ mere(marie,popeye).
 mere(olive,mimosa).
 mere(olive,sidonie).
 /* 
- * Relation de pètr
+ * Relation de père
  */
 pere(gaston,david).
 pere(gaston,virginie).
@@ -53,7 +53,7 @@ epoux(olive,popeye).
 /*REGLES*/
 
 epouse(Y,X) :- epoux(X,Y).
-
+	
 enfant(X) :- pere(Y,X).
 enfant(X) :- mere(Y,X).
 /*	
