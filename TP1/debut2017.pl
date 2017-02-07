@@ -27,62 +27,59 @@ e0(10,[X,Y]) :- p(X,[a,b|Y]).
 %%%%%%%%%%%%%%%%%%%%%%%
 %% II. FLUX DE CONTROLE
 
-%%%%%%%%%%%%%%%%%%%%%%%
-%% II. FLUX DE CONTROLE
-
 %% Comment marche Prolog :
 
 pro :-
   step1,
-  write($Tapez "s" pour passer au pas suivant ou bien une autre touche pour un ECHEC$),
+  write('Tapez s pour passer au pas suivant ou bien une autre touche pour un ECHEC'),
   nl,
-  keyb(X,Y),
-  (X=115,Y=31;false),
+  get_single_char(K),
+  (K=115;false),
   step2,
-  write($Tapez "s" pour terminer ou bien une autre touche  pour un ECHEC$),
+  write('Tapez s pour terminer ou bien une autre touche  pour un ECHEC'),
   nl,
-  keyb(X,Y),
-  (X=115,Y=31;false),
+  get_single_char(KK),
+  (KK=115;false),
   nl,
-  write($Terminaison reussite! Tapez une touche pour sortir$),
+  write('Terminaison reussite! Tapez une touche pour sortir'),
   nl,
-  keyb(_,_),
+  get_single_char(_),
   !.
   
 step1 :-
-  write($PAS 1 : $),
+  write('PAS 1 : '),
   nl.
+
 step1 :-
   nl,
-  write($Un echec en PAS 1! Pour voir une autre alternative tapez une touche$),
-  keyb(_,_),
+ write('Un echec en PAS 1! Pour voir une autre alternative tapez une touche'),
+  get_single_char(_),
   nl,
-  step1:1.
-   
+  step1_1.
+
 step2 :-
-  write($PAS 2 : $),
+  write('PAS 2 : '),
   nl.
 step2 :-
   nl,
-  write($Un echec en PAS 2! Il n'y a pas d'autre alternative! Tapez une touche pour faire le BACKTRACKING$),
-  keyb(_,_),
+  write('Un echec en PAS 2! Il n y a pas d autre alternative! Tapez une touche pour faire le BACKTRACKING'),
+  get_single_char(_),
   nl,
   fail.
   
-step1:1 :- 
-  write($This is the second altrnative for step1$),
+step1_1 :- 
+  write('This is the second altrnative for step1'),
   nl,  
-  write($Type "s" to proceed to the next step or other key for FAILURE$),
+  write('Type s to proceed to the next step or other key for FAILURE'),
   nl,
-  keyb(X,Y),
+  get_single_char(K),
   nl,
-  (X=115,Y=31;
-   write($This is the deadend. Type a key to FAIL$),
+  (K=115;
+   write('This is the deadend. Type a key to FAIL'),
    nl,
-   keyb(_,_),
+  get_single_char(_),
    false
   ).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 e1(a) :- write('a -> b '),
@@ -111,7 +108,7 @@ e1(e) :- write(' e reussit ').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%% INTERPRETEUR
-% 2. Regle d'interpretations des programmes en PROLOG
+% 2. Regle d interpretations des programmes en PROLOG
 % Programme P+{:- but}. Etat initial <:-but ; identite>
 
 %% I. Pas de RESOLUTION.
@@ -141,7 +138,6 @@ e1(e) :- write(' e reussit ').
 %   ALORS l'etat precedant S(i-1) est recupere (donc, l'unificateur u est
 %   oublie) ET on passe au pas de RESOLUTION.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% III. Example : Relations de parente %%%%%%%%%
 
@@ -177,7 +173,6 @@ frere_de(X,Y) :-
   sexe(X,m).
 
 %% Programmer le predicat    soeur_de(X,Y)
-
 
 %%%%%%%%%%%%%%  Base de donnee : une famille %%%%%%%%%%%%%%%%%%%%%
 sexe(marie, f).
@@ -250,7 +245,6 @@ b(6,1).
 b(_,8).
 
 % Expliquer la solution :
-
 c(1).
 c(2).
 c(3).
@@ -273,7 +267,6 @@ e3 :-
 %% dans le fait   blist(List).
 
 blist([1,2,3,4,5,6,7,8]).
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% V. Programmes recursifs.
