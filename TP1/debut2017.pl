@@ -20,7 +20,7 @@ e0(9,X) :- [1|_] = X.
 %% Unification au cours des appels:
 e0(10,[X,Y]) :- p(X,[a|Y]).
 
-p(a0,[a,b,c]).                     % definition de p/2 par un fait
+p(m,[a,b,c]).                     % definition de p/2 par un fait
 
 e0(10,[X,Y]) :- p(X,[a,b|Y]).
 
