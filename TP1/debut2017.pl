@@ -190,6 +190,7 @@ sexe(thomas, m).
 sexe(pierre, m).
 sexe(claude, m).
 sexe(yannick, m).
+sexe(christian, m).
 sexe(basile, m).
 sexe(edouard, m).
 sexe(fabian, m).
