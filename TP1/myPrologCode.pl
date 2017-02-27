@@ -161,4 +161,87 @@ e0d(10,[X,Y]) :- p4(X,[a,b,c,d|Y]).
 /*Renvoi false ET ne renvoi pas de multiple*/
 
 
-/*Pour la fonction pro ... faire l'arbre pour bien comprendre ... :) */3
+/*Pour la fonction pro ... faire l'arbre pour bien comprendre ... :) */
+
+
+e1(a) :- write('a -> b '),
+nl,
+e1(b),
+nl,
+write(' b -> c '),
+nl,
+e1(c),
+nl,
+write('c -> fail '),                % ECHEC
+nl,
+write(' Backtrack... '),
+nl,
+fail.
+e1(a) :- write(' deuxieme clause de a '),
+nl,
+write(' a -> e '),
+nl,
+e1(e).
+e1(b) :- write(' b reussit ').
+e1(c) :- write(' c -> e '),
+nl,
+e1(e).
+e1(e) :- write(' e reussit ').
+
+/* MY LTERNATIVE */
+/* ONE */
+/* On obtient le même résultat qu avec e1(a) puisque le fail entraine un arret */
+e1bis(a) :- write('a -> b '),
+nl,
+e1bis(b),
+nl,
+write(' b -> c '),
+nl,
+e1bis(c),
+nl,
+write('c -> fail '),                % ECHEC
+nl,
+write(' Backtrack... '),
+nl,
+fail.
+e1bis(a) :- write(' deuxieme clause de a '),
+nl,
+write(' a -> e '),
+nl,
+e1bis(e).
+e1bis(b) :- write(' b reussit ').
+e1bis(b) :- write(' deuxième clause de b '),
+nl,
+fail.
+e1bis(c) :- write(' c -> e '),
+nl,
+e1bis(e).
+e1bis(e) :- write(' e reussit ').
+
+/* TWO */
+/* LA CA CHANGE */
+e1tris(a) :- write('a -> b '),
+nl,
+e1tris(b),
+nl,
+write(' b -> c '),
+nl,
+e1tris(c),
+nl,
+write('c -> fail '),                % ECHEC
+nl,
+write(' Backtrack... '),
+nl,
+fail.
+e1tris(a) :- write(' deuxieme clause de a '),
+nl,
+write(' a -> e '),
+nl,
+e1tris(e).
+e1tris(b) :- write(' b reussit ').
+e1tris(b) :- write(' deuxième clause de b ').
+e1tris(c) :- write(' c -> e '),
+nl,
+e1tris(e).
+e1tris(e) :- write(' e reussit ').
+

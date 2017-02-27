@@ -28,6 +28,8 @@ e0(10,[X,Y]) :- p(X,[a,b|Y]).
 %% II. FLUX DE CONTROLE
 
 %% Comment marche Prolog :
+/* s dans ascii c'est 115, qui l'aurait cru */
+
 
 pro :-
   step1,
