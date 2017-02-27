@@ -234,8 +234,6 @@ couple(elodie,christian).
 couple(claude,maggy).
 couple(maggy,edouard).
 
-parent(X,Y) :- mere(X,Z),pere(Y,Z).
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% IV. Programmes sans recursion, avec le backtracking.
@@ -249,15 +247,16 @@ b(2,2).
 b(6,1).
 b(_,8).
 
+
 % Expliquer la solution :
 c(1).
 c(2).
 c(3).
-c(4).
+/*c(4).
 c(5).
 c(6).
 c(7).
-
+*/
 e3 :-
       c(X),
       c(Y),
@@ -267,6 +266,8 @@ e3 :-
       nl,
       fail;
       true.
+
+
 
 %% Programmer un algo e4 qui ecrit le 2eme, 4eme et 7eme elements de la liste
 %% dans le fait   blist(List).

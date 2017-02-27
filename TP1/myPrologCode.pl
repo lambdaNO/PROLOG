@@ -349,9 +349,100 @@ V est soit la mère,j soit le pere de Y - second enfant
 X est une fille - premier enfant
 */
 
+e2(X) :- b(X,X),
+        write(X),
+        nl,
+        fail.
+b(1,2).
+b(2,2).
+b(6,1).
+b(_,8).
+b(4,4).
+b(5,1).
+b(6,_).
 
 
+e2bis(X) :- b2(X,Y),
+        write(X),
+        nl,
+        fail.
+b2(1,2).
+b2(2,2).
+b2(6,1).
+b2(_,8).
 
+e2tris(X) :- b2(X,Y),
+        write(Y),
+        nl,
+        fail.
+
+% Expliquer la solution :
+c(1).
+c(2).
+c(3).
+/*c(4).
+c(5).
+c(6).
+c(7).
+*/
+e3 :-
+      c(X),
+      c(Y),
+      X<Y,
+      write(X),
+      write(Y),
+      nl,
+      fail;
+      true.
+
+c2(3).
+c2(2).
+c2(1).
+
+ebis3 :-
+      c2(X),
+      c2(Y),
+      X<Y,
+      write(X),
+      write(Y),
+      nl,
+      fail;
+      true.
+
+/* Quelques variations inutiles mais qui permettent de connaitre les opérateurs qui fonctionnent sous PROLOG*/
+/* Bon en fait c'est pas si inutile que ça puisque ça t'a permis de comprendre que <= n'est pas bon et qu'il faut écrire =<, 
+MORALITE ON DIT : (X egal ou inférieur à Y) et (X supérieur ou égal à Y)  */
+
+etris3 :-
+      c(X),
+      c(Y),
+      X=<Y,
+      write(X),
+      write(Y),
+      nl,
+      fail;
+      true.
+
+equadris3 :-
+      c(X),
+      c(Y),
+      X>=Y,
+      write(X),
+      write(Y),
+      nl,
+      fail;
+      true.
+
+
+equintis3 :-
+      c(X),
+      c(Y),
+      X>Y,
+      write(X),
+      write(Y),
+      nl,
+      fail;
+      true.
 
 
 
