@@ -234,6 +234,9 @@ couple(elodie,christian).
 couple(claude,maggy).
 couple(maggy,edouard).
 
+parent(X,Y) :- mere(X,Z),pere(Y,Z).
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% IV. Programmes sans recursion, avec le backtracking.
 %

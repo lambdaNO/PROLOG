@@ -245,3 +245,113 @@ nl,
 e1tris(e).
 e1tris(e) :- write(' e reussit ').
 
+%% III. Example : Relations de parente %%%%%%%%%
+
+fils(X,Y) :-
+  pere(Y,X),
+  sexe(X,m).
+fils(X,Y) :-
+  mere(Y,X),
+  sexe(X,m).
+
+fille(X,Y) :-
+  pere(Y,X),
+  sexe(X,f).
+fille(X,Y) :-
+  mere(Y,X),
+  sexe(X,f).
+
+parent_de(X,Y) :-
+  pere(X,Y);
+  mere(X,Y).
+
+ancetre_de(X,Y) :-
+  parent_de(X,Y).
+ancetre_de(X,Y) :-
+  parent_de(X,Z),
+  ancetre_de(Z,Y).
+
+frere_de(X,Y) :-
+  parent_de(Z,X),
+  parent_de(V,Y),
+  (couple(Z,V);
+   couple(V,Z)),
+  sexe(X,m).
+
+%% Programmer le predicat    soeur_de(X,Y)
+
+/*%%%%%%%%%%%%%%  Base de donnee : une famille %%%%%%%%%%%%%%%%%%%%%*/
+sexe(marie, f).
+sexe(eve, f).
+sexe(bea, f).
+sexe(chantal, f).
+sexe(elodie, f).
+sexe(maggy, f).
+sexe(aline, f).
+
+sexe(pierre, m).
+sexe(adam, m).
+sexe(jean, m).
+sexe(thomas, m).
+sexe(christian, m).
+sexe(claude, m).
+sexe(yannick, m).
+sexe(basile, m).
+sexe(edouard, m).
+sexe(fabian, m).
+
+pere(adam,chantal).
+pere(adam,jean).
+
+mere(eve,chantal).
+mere(eve,jean).
+
+pere(pierre,elodie).
+pere(pierre,thomas).
+pere(pierre,fabien).
+
+mere(chantal,elodie).
+mere(chantal,thomas).
+mere(chantal,fabien).
+
+pere(jean,marie).
+pere(jean,christian).
+
+mere(bea,marie).
+mere(bea,christian).
+
+pere(christian,maggy).
+mere(elodie,maggy).
+
+mere(maggy,yannick).
+mere(maggy,basile).
+mere(maggy,aline).
+
+pere(claude,yannick).
+pere(claude,basile).
+pere(edouard,aline).
+
+couple(eve,adam).
+couple(pierre,chantal).
+couple(jean,bea).
+couple(elodie,christian).
+couple(claude,maggy).
+couple(maggy,edouard).
+
+
+/*%%%%% My rules %%%%%%%%%%%%%%%%*/
+% Programmer le predicat    soeur_de(X,Y)
+
+soeur_de(X,Y) :- parent_de(Z,X), parent_de(V,Y),(couple(Z,V);couple(V,Z)),sexe(X,f).
+/* X est soeur de Y ssi 
+Z est soit la mère, soit le pere de X - premier enfant
+V est soit la mère,j soit le pere de Y - second enfant 
+X est une fille - premier enfant
+*/
+
+
+
+
+
+
+
