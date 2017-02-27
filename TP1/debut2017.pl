@@ -8,10 +8,10 @@ e0(2,[X,Y]) :- f(X,_,h(Y,Y,c)) = f(Z,0,h(k(X),V,X)).
 e0(3,[U]) :- f(X,h(X,X),k(Y,Y)) = f(g(0),Y,U).
 e0(4,[X,Y,Z]) :- f(X,h(_,Y,Y),_) = f(Y,h(6,k(5),Z),c).
 e0(5,_) :-
-  f(X,[1,2]) = f([1|Y],X),
-  write(X),
-  nl,        % a la ligne
-  write(Y).
+f(X,[1,2]) = f([1|Y],X),
+write(X),
+nl,        % a la ligne
+write(Y).
 e0(6,X) :- f(a,b) = f(X,X).
 e0(7,X) :- f(X) = X.               % BOUCLES !!!!!
 e0(8,X) :- [1|X] = X.
@@ -28,82 +28,84 @@ e0(10,[X,Y]) :- p(X,[a,b|Y]).
 %% II. FLUX DE CONTROLE
 
 %% Comment marche Prolog :
+/* s dans ascii c'est 115, qui l'aurait cru */
+
 
 pro :-
-  step1,
-  write('Tapez s pour passer au pas suivant ou bien une autre touche pour un ECHEC'),
-  nl,
-  get_single_char(K),
-  (K=115;false),
-  step2,
-  write('Tapez s pour terminer ou bien une autre touche  pour un ECHEC'),
-  nl,
-  get_single_char(KK),
-  (KK=115;false),
-  nl,
-  write('Terminaison reussite! Tapez une touche pour sortir'),
-  nl,
-  get_single_char(_),
-  !.
-  
-step1 :-
-  write('PAS 1 : '),
-  nl.
+step1,
+write('Tapez s pour passer au pas suivant ou bien une autre touche pour un ECHEC'),
+nl,
+get_single_char(K),
+(K=115;false),
+step2,
+write('Tapez s pour terminer ou bien une autre touche  pour un ECHEC'),
+nl,
+get_single_char(KK),
+(KK=115;false),
+nl,
+write('Terminaison reussite! Tapez une touche pour sortir'),
+nl,
+get_single_char(_),
+!.
 
 step1 :-
-  nl,
- write('Un echec en PAS 1! Pour voir une autre alternative tapez une touche'),
-  get_single_char(_),
-  nl,
-  step1_1.
+write('PAS 1 : '),
+nl.
+
+step1 :-
+nl,
+write('Un echec en PAS 1! Pour voir une autre alternative tapez une touche'),
+get_single_char(_),
+nl,
+step1_1.
 
 step2 :-
-  write('PAS 2 : '),
-  nl.
+write('PAS 2 : '),
+nl.
 step2 :-
-  nl,
-  write('Un echec en PAS 2! Il n y a pas d autre alternative! Tapez une touche pour faire le BACKTRACKING'),
-  get_single_char(_),
-  nl,
-  fail.
-  
-step1_1 :- 
-  write('This is the second altrnative for step1'),
-  nl,  
-  write('Type s to proceed to the next step or other key for FAILURE'),
-  nl,
-  get_single_char(K),
-  nl,
-  (K=115;
-   write('This is the deadend. Type a key to FAIL'),
-   nl,
-  get_single_char(_),
-   false
-  ).
+nl,
+write('Un echec en PAS 2! Il n y a pas d autre alternative! Tapez une touche pour faire le BACKTRACKING'),
+get_single_char(_),
+nl,
+fail.
+
+step1_1 :-
+write('This is the second altrnative for step1'),
+nl,
+write('Type s to proceed to the next step or other key for FAILURE'),
+nl,
+get_single_char(K),
+nl,
+(K=115;
+write('This is the deadend. Type a key to FAIL'),
+nl,
+get_single_char(_),
+false
+).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 e1(a) :- write('a -> b '),
-     nl,
-     e1(b),
-     nl,
-     write(' b -> c '),
-     nl,
-     e1(c),
-     nl,
-     write('c -> fail '),                % ECHEC
-     nl,
-     write(' Backtrack... '),
-     nl,
-     fail.
+nl,
+e1(b),
+nl,
+write(' b -> c '),
+nl,
+e1(c),
+nl,
+write('c -> fail '),                % ECHEC
+nl,
+write(' Backtrack... '),
+nl,
+fail.
 e1(a) :- write(' deuxieme clause de a '),
-     nl,
-     write(' a -> e '),
-     nl,
-     e1(e).
+nl,
+write(' a -> e '),
+nl,
+e1(e).
 e1(b) :- write(' b reussit ').
 e1(c) :- write(' c -> e '),
-     nl,
-     e1(e).
+nl,
+e1(e).
 e1(e) :- write(' e reussit ').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,35 +144,35 @@ e1(e) :- write(' e reussit ').
 %% III. Example : Relations de parente %%%%%%%%%
 
 fils(X,Y) :-
-  pere(Y,X),
-  sexe(X,m).
+pere(Y,X),
+sexe(X,m).
 fils(X,Y) :-
-  mere(Y,X),
-  sexe(X,m).
+mere(Y,X),
+sexe(X,m).
 
 fille(X,Y) :-
-  pere(Y,X),
-  sexe(X,f).
+pere(Y,X),
+sexe(X,f).
 fille(X,Y) :-
-  mere(Y,X),
-  sexe(X,f).
+mere(Y,X),
+sexe(X,f).
 
 parent_de(X,Y) :-
-  pere(X,Y);
-  mere(X,Y).
+pere(X,Y);
+mere(X,Y).
 
 ancetre_de(X,Y) :-
-  parent_de(X,Y).
+parent_de(X,Y).
 ancetre_de(X,Y) :-
-  parent_de(X,Z),
-  ancetre_de(Z,Y).
+parent_de(X,Z),
+ancetre_de(Z,Y).
 
 frere_de(X,Y) :-
-  parent_de(Z,X),
-  parent_de(V,Y),
-  (couple(Z,V);
-   couple(V,Z)),
-  sexe(X,m).
+parent_de(Z,X),
+parent_de(V,Y),
+(couple(Z,V);
+couple(V,Z)),
+sexe(X,m).
 
 %% Programmer le predicat    soeur_de(X,Y)
 
@@ -187,10 +189,9 @@ sexe(pierre, m).
 sexe(adam, m).
 sexe(jean, m).
 sexe(thomas, m).
-sexe(pierre, m).
+sexe(christian, m).
 sexe(claude, m).
 sexe(yannick, m).
-sexe(christian, m).
 sexe(basile, m).
 sexe(edouard, m).
 sexe(fabian, m).
@@ -233,36 +234,40 @@ couple(elodie,christian).
 couple(claude,maggy).
 couple(maggy,edouard).
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% IV. Programmes sans recursion, avec le backtracking.
 %
 e2(X) :- b(X,X),
-        write(X),
-        nl,
-        fail.
+write(X),
+nl,
+fail.
 b(1,2).
 b(2,2).
 b(6,1).
 b(_,8).
 
+
 % Expliquer la solution :
 c(1).
 c(2).
 c(3).
-c(4).
+/*c(4).
 c(5).
 c(6).
 c(7).
-
+*/
 e3 :-
-      c(X),
-      c(Y),
-      X<Y,
-      write(X),
-      write(Y),
-      nl,
-      fail;
-      true.
+c(X),
+c(Y),
+X<Y,
+write(X),
+write(Y),
+nl,
+fail;
+true.
+
+
 
 %% Programmer un algo e4 qui ecrit le 2eme, 4eme et 7eme elements de la liste
 %% dans le fait   blist(List).
@@ -280,12 +285,12 @@ blist([1,2,3,4,5,6,7,8]).
 
 memb(E,[E|_]).       % point de choix !
 memb(E,[_|L]) :-
-     memb(E,L).
+memb(E,L).
 
 e5(X) :- memb(2,[1,2|X]).
 e6(X) :-
-  memb(X,[1,2,3]), % POINT DE CHOIX
-  write(X),
-  fail;            % un echec et le bactracking au point
-                   % de choix le plus proche
-  true.
+memb(X,[1,2,3]), % POINT DE CHOIX
+write(X),
+fail;            % un echec et le bactracking au point
+% de choix le plus proche
+true.
