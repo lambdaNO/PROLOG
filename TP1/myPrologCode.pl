@@ -77,6 +77,23 @@ true ;
 Y = []
 true.
 
+NOW IT'S OK BUT WHY 
+
+?- e0g(X,_).
+
+Y = [3]
+X = 5.
+
+?- e0g(X,Y).
+
+Y = [3]
+X = 5.
+
+?- e0g(5,_).
+
+Y = [3]
+
+
 */
 
 
