@@ -14,7 +14,7 @@ membp([_,E|L],[E|T]) :-
 
 membi([], []).
 membi([E],[E]).
-membi([E,_|L],[E|T]) :- membp(L,T).
+membi([E,_|L],[E|T]) :- membi(L,T),nl,write('R3 : '),write(L),write(' '),write(T).
 
 
 
