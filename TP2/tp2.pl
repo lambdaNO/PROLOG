@@ -10,7 +10,13 @@ membp([_,E|L],[E|T]) :-
   membp(L,T).
 
 %% 2. PROGRAMMER : Elements impairs d'une liste d'une longueur paire
-% membi(+Liste,-Impaires)
+% membi(+Liste,-Impaires) :
+
+membi([], []).
+membi([E],[E]).
+membi([E,_|L],[E|T]) :- membp(L,T).
+
+
 
 %% 3. Choix nondeterministe d'un element d'une liste (predicat bibl. select/3)
 %% sele(+List,?Element,?Rest): enumere les elements de la
