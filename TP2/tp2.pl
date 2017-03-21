@@ -2,12 +2,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%% TP2 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%% LEGENDE : + correspond à une entrée
+%%%% LEGENDE : - correspond à une sortie
+
+
+%%%% ARBRE FAIT
+
 %% 1. Elements pairs d'une liste d'une longueur paire
 %% membp(+Liste,-Pairs) :
 membp([], []).
 membp([_],[]).
 membp([_,E|L],[E|T]) :-
   membp(L,T).
+
+%%%% ARBRE A FAIRE
 
 %% 2. PROGRAMMER : Elements impairs d'une liste d'une longueur paire
 % membi(+Liste,-Impaires) :
@@ -16,7 +24,7 @@ membi([], []).
 membi([E],[E]).
 membi([E,_|L],[E|T]) :- membi(L,T),nl,write('R3 : '),write(L),write(' '),write(T).
 
-
+%%%% ARBRE A FAIRE	
 
 %% 3. Choix nondeterministe d'un element d'une liste (predicat bibl. select/3)
 %% sele(+List,?Element,?Rest): enumere les elements de la
@@ -25,6 +33,8 @@ membi([E,_|L],[E|T]) :- membi(L,T),nl,write('R3 : '),write(L),write(' '),write(T
 sele([E|L],E,L).             % point de choix
 sele([E1|L],E,[E1|L1]) :-
      sele(L,E,L1).
+
+%%%% ARBRE A FAIRE
 
 e1(Liste) :-
   sele(Liste,E,R),
@@ -35,8 +45,11 @@ e1(Liste) :-
   fail;
   true.
 
+%%%% ARBRE FAIT
+
 %% 4. Enumeration des elements d'une liste avec ses positions
 %% lstel(+List,?Position,?Element):
+
 lstel(L,I,E) :-
      l0(L,1,I,E).
 l0([E|_],I,I,E).
@@ -47,6 +60,10 @@ l0([_|R],I,I2,E1) :-
 %% 5. PROGRAMMEZ l'enumeration des positions d'une liste ou on
 %% trouve Y = X pour un X donne.
 %% occ(+Liste,+X,-I).
+
+%%%% ARBRE A FAIRE
+
+occ(L,I,E) :- lstel(L,E,I).
 
 %% 6. PROPRIETE : Les elements impaires d'une liste
 %% paires coincident avec ces elements impaires
