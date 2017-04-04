@@ -1,0 +1,145 @@
+%%%%%%%%%% des exemples de predicat
+
+pos(0):-fail.
+pos(1).
+pos(2) :- write('Avez vous le laisser passer A 38'),nl.
+pos(3) :- write('Avez vous le laisser passer A 38'),nl,fail.
+pos(4) :- write('Il vous faut le formulaire bleu').
+
+
+?- sat(x).
+ERROR: sat/1: Undefined procedure: x/0
+   Exception: (7) x ? No previous search
+   Exception: (7) x ? creep
+?- sat(X).
+X = true.
+
+?- sat(X & true).
+X = true.
+
+?- sat(X 'V' Y).
+X = true.
+
+?- sat(false 'V' Y).
+Y = true ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) false'V'_G1171 ? abort
+% Execution Aborted
+?- sat(9<3).
+false.
+
+?- sat( X<3 'V' 5<X).
+ERROR: Syntax error: Operator priority clash
+ERROR: sat( X<
+ERROR: ** here **
+ERROR: 3 'V' 5<X) . 
+?- sat( (X<3) 'V' (5<X)).
+ERROR: </2: Arguments are not sufficiently instantiated
+   Exception: (6) sat((_G2272<3)'V' (5<_G2272)) ? abort
+% Execution Aborted
+?- sat( (7<3) 'V' (5<7)).
+true ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) (7<3)'V' (5<7) ? abort
+% Execution Aborted
+?- sat(sat(X)).
+X = true.
+
+?- sat((true & false) 'V' (false & ('~' true))).
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) true&false'V'false& ~true ? abort
+% Execution Aborted
+?- sat((true & false) 'V' (true & ('~' true))).
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) true&false'V'true& ~true ? abort
+% Execution Aborted
+?- sat((true & false) 'V' (true & ('~' X))).
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) true&false'V'true& ~_G891 ? abort
+% Execution Aborted
+?- sat((true & X) 'V' (true & ('~' true))).
+X = true.
+
+?- sat((true & false) 'V' (B & true)).
+B = true ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) true&false'V'_G1895&true ? abort
+% Execution Aborted
+?- sat(('~' sat(X)) 'V' sat(Y)).
+Y = true ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) ~sat(_G2892)'V'sat(_G2896) ? abort
+% Execution Aborted
+
+
+?- sat(pos(X)).
+X = 1.
+
+?- sat(pos(X) 'V' pos(Y)).
+X = 1.
+
+?- sat(pos(0) 'V' pos(Y)).
+Y = 1 ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) pos(0)'V'pos(_G3906) ? abort
+% Execution Aborted
+
+
+
+
+----------
+
+
+?- pos(2).
+Avez vous le laisser passer A 38
+true.
+
+?- sat(X 'V' pos(2)).
+X = true.
+
+?- sat(pos(2) 'V' X).
+Avez vous le laisser passer A 38
+true.
+
+------
+
+?- sat(pos(3) 'V' X).
+Avez vous le laisser passer A 38
+X = true ;
+
+
+-----
+
+?- sat(pos(3) 'V' X).
+Avez vous le laisser passer A 38
+X = true ;
+ERROR: sat/1: Undefined procedure: ('V')/2
+   Exception: (7) pos(3)'V'_G4903 ? Unknown option (h for help)
+   Exception: (7) pos(3)'V'_G4903 ? Unknown option (h for help)
+   Exception: (7) pos(3)'V'_G4903 ? alternatives
+   Exception: (7) pos(3)'V'_G4903 ? creep
+?- sat(pos(3) 'V' X).
+Avez vous le laisser passer A 38
+X = true ;
+
+?- sat(pos(3) 'V' pos(4)).
+Avez vous le laisser passer A 38Il vous faut le formulaire bleu
+true 
+Unknown action:  (h for help)
+Action? 
+Unknown action: [ (h for help)
+Action? 
+Unknown action: A (h for help)
+Action? 
+Unknown action:  (h for help)
+Action? 
+Unknown action: [ (h for help)
+Action? 
+Unknown action: D (h for help)
+Action? .
+
+?- sat(pos(2) 'V' pos(4)).
+Avez vous le laisser passer A 38
+true.
+
+
