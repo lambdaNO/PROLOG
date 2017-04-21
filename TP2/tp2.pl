@@ -138,6 +138,8 @@ e9(P) :-
 
 %% 10. PROGRAMMEZ : Enumeration des suffixes d'une liste.
 %% suff(-Pref,+Liste)
+suff(L,L).
+suff(S,[X|Y]) :- suff(S,Y).
 
 e10(S) :-
   suff(S,[a,b,c,d]),
@@ -147,6 +149,8 @@ e10(S) :-
   true.
 
 %% 11. La factorielle naive :
+
+%fct(0,1):- !.
 fct(0,1).
 fct(N,F) :-
   N1 is N-1,
