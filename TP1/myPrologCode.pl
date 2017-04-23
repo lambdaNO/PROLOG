@@ -459,7 +459,8 @@ write(X),
 write(Y),
 nl,
 fail;
-true.
+true.)
 
-
+bliste([1,2,3,4,5,6,7,8]).
+ep :- bliste([1,2,3,4,5,6,7,8]).
 

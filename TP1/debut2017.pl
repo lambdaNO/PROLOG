@@ -273,6 +273,12 @@ true.
 %% dans le fait   blist(List).
 
 blist([1,2,3,4,5,6,7,8]).
+e4 :- blist([_,X,_,Y,_,_,Z|_]),
+write('blist([1,2,3,4,5,6,7,8])'),nl,
+write('blist([_,X,_,Y,_,_,Z|_])'),nl,
+write('X = '),write(X),nl,
+write('Y = '),write(Y),nl,
+write('Z = '),write(Z).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% V. Programmes recursifs.
