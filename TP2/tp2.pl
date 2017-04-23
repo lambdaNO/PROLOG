@@ -22,7 +22,8 @@ membp([_,E|L],[E|T]) :-
 
 membi([], []).
 membi([E],[E]).
-membi([E,_|L],[E|T]) :- membi(L,T),nl,write('R3 : '),write(L),write(' '),write(T).
+membi([E,_|L],[E|T]) :-
+    membi(L,T).
 
 %%%% ARBRE A FAIRE	
 
@@ -189,6 +190,11 @@ e13(S) :-
 
 %% 13. PROGRAMMEZ l'inversion d'une liste
 %% rvs(+Liste,-IListe)
+
+rvs([][]).
+rvs([E|L],R) :- rvs(L|RL),app(RL,[E],R).
+
+
 
 e14(R) :-
   L=[1,2,3,4,5,6],
